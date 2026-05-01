@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../api";
 import { useAuth } from "../context/AuthContext";
 import { useNotification } from "../components/Notification";
+import Icons from "../components/Icons";
 
 import "./TrainingPlansPage.css";
 
@@ -187,18 +188,22 @@ const TrainingPlansPage = () => {
               <div className="plan-info-details">
                 <p>{selectedPlan.description}</p>
                 <p>
-                  📅 Старт:{" "}
+                  <Icons.Calendar className="icon-small" /> Старт:{" "}
                   {new Date(selectedPlan.startDate).toLocaleDateString("ru-RU")}
                 </p>
                 {selectedPlan.endDate && (
                   <p>
-                    🏁 Окончание:{" "}
+                    <Icons.Target className="icon-small" /> Окончание:{" "}
                     {new Date(selectedPlan.endDate).toLocaleDateString("ru-RU")}
                   </p>
                 )}
-                <p>👨‍🏫 Тренер: {selectedPlan.coachName || "Не назначен"}</p>
                 <p>
-                  ✅ Выполнено: {selectedPlan.completedItems}/
+                  <Icons.User className="icon-small" /> Тренер:{" "}
+                  {selectedPlan.coachName || "Не назначен"}
+                </p>
+                <p>
+                  <Icons.Check className="icon-small" /> Выполнено:{" "}
+                  {selectedPlan.completedItems}/
                   {selectedPlan.totalItems} заданий
                 </p>
               </div>
@@ -207,7 +212,9 @@ const TrainingPlansPage = () => {
 
           {/* Календарь плана */}
           <div className="plan-calendar">
-            <h2 className="section-title">📅 Расписание тренировок</h2>
+            <h2 className="section-title">
+              <Icons.Calendar className="icon-medium" /> Расписание тренировок
+            </h2>
             <div className="plan-items">
               {selectedPlan.items?.map((item) => (
                 <div
@@ -249,7 +256,7 @@ const TrainingPlansPage = () => {
                   </div>
                   {item.scheduledDate && (
                     <div className="item-date">
-                      📅{" "}
+                      <Icons.Calendar className="icon-small" />{" "}
                       {new Date(item.scheduledDate).toLocaleDateString("ru-RU")}
                     </div>
                   )}
@@ -299,7 +306,9 @@ const TrainingPlansPage = () => {
       </header>
 
       <main className="container">
-        <h1 className="page-title">📋 Планы тренировок</h1>
+        <h1 className="page-title">
+          <Icons.Note className="page-icon" /> Планы тренировок
+        </h1>
 
         <div className="plan-filters">
           {["active", "completed", "draft", "all"].map((status) => (
@@ -379,7 +388,9 @@ const TrainingPlansPage = () => {
                   )}
                 </div>
                 {plan.sportType && (
-                  <div className="plan-sport">🏋️ {plan.sportType}</div>
+                  <div className="plan-sport">
+                    <Icons.Weight className="icon-small" /> {plan.sportType}
+                  </div>
                 )}
               </div>
             ))}

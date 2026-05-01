@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../api";
 import { useAuth } from "../context/AuthContext";
 import { useNotification } from "../components/Notification";
+import Icons from "../components/Icons";
 import "./ProgressPage.css";
 
 const ProgressPage = () => {
@@ -127,14 +128,14 @@ const ProgressPage = () => {
 
   const getRecordTypeIcon = (type) => {
     const icons = {
-      WEIGHT: "🏋️",
-      TIME: "⏱️",
-      DISTANCE: "📏",
-      REPS: "🔄",
-      SPEED: "⚡",
-      FLEXIBILITY: "🤸",
+      WEIGHT: <Icons.Weight className="icon" />,
+      TIME: <Icons.Time className="icon" />,
+      DISTANCE: <Icons.Distance className="icon" />,
+      REPS: <Icons.Reps className="icon" />,
+      SPEED: <Icons.Speed className="icon" />,
+      FLEXIBILITY: <Icons.Runner className="icon" />,
     };
-    return icons[type] || "📊";
+    return icons[type] || <Icons.Chart className="icon" />;
   };
 
   if (loading) return <div className="loading">Загрузка прогресса...</div>;
@@ -162,28 +163,36 @@ const ProgressPage = () => {
       </header>
 
       <main className="container">
-        <h1 className="page-title">📈 Прогресс</h1>
+        <h1 className="page-title">
+          <Icons.Chart className="page-icon" /> Прогресс
+        </h1>
 
         {/* Статистика */}
         {progressData && (
           <>
             <div className="stats-cards">
               <div className="stat-card">
-                <div className="stat-icon">🔥</div>
+                <div className="stat-icon">
+                  <Icons.Fire className="icon" />
+                </div>
                 <div className="stat-value">
                   {progressData.currentStreak || 0}
                 </div>
                 <div className="stat-label">Дней подряд</div>
               </div>
               <div className="stat-card">
-                <div className="stat-icon">📊</div>
+                <div className="stat-icon">
+                  <Icons.Chart className="icon" />
+                </div>
                 <div className="stat-value">
                   {progressData.attendanceRate?.toFixed(1) || "0.0"}%
                 </div>
                 <div className="stat-label">Посещаемость</div>
               </div>
               <div className="stat-card">
-                <div className="stat-icon">🏆</div>
+                <div className="stat-icon">
+                  <Icons.Trophy className="icon" />
+                </div>
                 <div className="stat-value">
                   {progressData.totalTrainings || 0}
                 </div>

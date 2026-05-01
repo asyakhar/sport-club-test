@@ -77,9 +77,74 @@
   }
   
   .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
+  font-size: 2rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon .icon {
+  width: 48px;
+  height: 48px;
+  color: #2a5298;
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievement-icon .icon-medium {
+  width: 64px;
+  height: 64px;
+  color: #ffd700;
+}
+
+.achievement-card.locked .achievement-icon .icon-medium {
+  color: #a0aec0;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-icon .icon-large {
+  width: 80px;
+  height: 80px;
+  color: #e74c3c;
+}
+
+.icon-small {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title .page-icon {
+  width: 40px;
+  height: 40px;
+  color: #2a5298;
+}
   
   .stat-value {
     font-size: 2rem;
