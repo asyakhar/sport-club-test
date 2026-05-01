@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchWithAuth } from "../api";
 import { useAuth } from "../context/AuthContext";
+import Icons from "../components/Icons";
 import "./AchievementsPage.css";
 
 const AchievementsPage = () => {
@@ -121,13 +122,13 @@ const AchievementsPage = () => {
 
   const getTypeIcon = (type) => {
     const icons = {
-      ATTENDANCE: "🏃",
-      RECORD: "🏆",
-      STREAK: "🔥",
-      COMPETITION: "🥇",
-      SPECIAL: "⭐",
+      ATTENDANCE: <Icons.Runner className="icon-small" />,
+      RECORD: <Icons.Trophy className="icon-small" />,
+      STREAK: <Icons.Fire className="icon-small" />,
+      COMPETITION: <Icons.Medal className="icon-small" />,
+      SPECIAL: <Icons.Star className="icon-small" />,
     };
-    return icons[type] || "🎯";
+    return icons[type] || <Icons.Target className="icon-small" />;
   };
 
   const getTypeName = (type) => {
@@ -176,7 +177,9 @@ const AchievementsPage = () => {
         </header>
         <main className="container">
           <div className="error-container">
-            <div className="error-icon">⚠️</div>
+            <div className="error-icon">
+              <Icons.Warning className="icon-large" />
+            </div>
             <h2>Ошибка</h2>
             <p>{error}</p>
             <button className="btn-primary" onClick={() => navigate("/")}>
@@ -204,24 +207,32 @@ const AchievementsPage = () => {
       </header>
 
       <main className="container">
-        <h1 className="page-title">🏆 Достижения</h1>
+        <h1 className="page-title">
+          <Icons.Trophy className="page-icon" /> Достижения
+        </h1>
 
         {/* Статистика */}
         <div className="stats-overview">
           <div className="stat-card">
-            <div className="stat-icon">🎯</div>
+            <div className="stat-icon">
+              <Icons.Target className="icon" />
+            </div>
             <div className="stat-value">
               {stats.earned}/{stats.total}
             </div>
             <div className="stat-label">Получено</div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon">⭐</div>
+            <div className="stat-icon">
+              <Icons.Star className="icon" />
+            </div>
             <div className="stat-value">{stats.points}</div>
             <div className="stat-label">Очков</div>
           </div>
           <div className="stat-card">
-            <div className="stat-icon">📊</div>
+            <div className="stat-icon">
+              <Icons.Chart className="icon" />
+            </div>
             <div className="stat-value">
               {stats.total > 0
                 ? Math.round((stats.earned / stats.total) * 100)
@@ -267,7 +278,15 @@ const AchievementsPage = () => {
                 }`}
               >
                 <div className="achievement-icon">
-                  {achievement.earned ? achievement.icon || "🏆" : "🔒"}
+                  {achievement.earned ? (
+                    achievement.icon ? (
+                      <Icons.Trophy className="icon-medium" />
+                    ) : (
+                      <Icons.Trophy className="icon-medium" />
+                    )
+                  ) : (
+                    <Icons.Lock className="icon-medium" />
+                  )}
                 </div>
                 <div className="achievement-info">
                   <h3 className="achievement-name">{achievement.name}</h3>
@@ -309,7 +328,7 @@ const AchievementsPage = () => {
 
                   {achievement.earned && achievement.earnedAt && (
                     <div className="earned-date">
-                      🎉 Получено:{" "}
+                      <Icons.Party className="icon-small" /> Получено:{" "}
                       {new Date(achievement.earnedAt).toLocaleDateString(
                         "ru-RU"
                       )}
@@ -318,7 +337,8 @@ const AchievementsPage = () => {
 
                   {!achievement.earned && (
                     <div className="requirement-hint">
-                      📝 {achievement.requirementDescription}
+                      <Icons.Note className="icon-small" />{" "}
+                      {achievement.requirementDescription}
                     </div>
                   )}
                 </div>

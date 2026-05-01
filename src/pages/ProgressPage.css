@@ -77,9 +77,49 @@
   }
   
   .stat-icon {
-    font-size: 2rem;
-    margin-bottom: 8px;
-  }
+  font-size: 2rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon .icon {
+  width: 48px;
+  height: 48px;
+  color: #2a5298;
+}
+
+.record-icon {
+  font-size: 2rem;
+  min-width: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.record-icon .icon {
+  width: 40px;
+  height: 40px;
+  color: #2a5298;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e3c72;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-title .page-icon {
+  width: 40px;
+  height: 40px;
+  color: #2a5298;
+}
   
   .stat-value {
     font-size: 2rem;

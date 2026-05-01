@@ -69,7 +69,7 @@ export const fetchWithAuth = async (url, options = {}) => {
   
 
   if (response.status === 401) {
-    console.log("🔒 401 - пробуем обновить токен");
+    console.log("401 - пробуем обновить токен");
     const refreshed = await autoRefreshToken();
     
     if (refreshed) {
