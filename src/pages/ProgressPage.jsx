@@ -286,50 +286,6 @@ const ProgressPage = () => {
               </div>
             )}
 
-            {/* Графики прогресса */}
-            {progressData.progressByExercise &&
-              Object.keys(progressData.progressByExercise).length > 0 && (
-                <div className="progress-charts">
-                  <h2 className="section-title">Графики прогресса</h2>
-                  {Object.entries(progressData.progressByExercise).map(
-                    ([exercise, dataPoints]) => (
-                      <div key={exercise} className="chart-card">
-                        <h3 className="chart-title">{exercise}</h3>
-                        <div className="chart-container">
-                          <div className="simple-chart">
-                            {dataPoints.map((point, index) => (
-                              <div
-                                key={index}
-                                className="chart-point"
-                                style={{
-                                  left: `${
-                                    (index /
-                                      Math.max(dataPoints.length - 1, 1)) *
-                                    100
-                                  }%`,
-                                  bottom: `${
-                                    (point.value /
-                                      Math.max(
-                                        ...dataPoints.map((p) => p.value),
-                                        1
-                                      )) *
-                                    80
-                                  }%`,
-                                }}
-                              >
-                                <div className="point-tooltip">
-                                  {point.date}: {point.value} {point.label}
-                                </div>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )
-                  )}
-                </div>
-              )}
-
             {/* Последние рекорды */}
             <div className="recent-records">
               <h2 className="section-title">Последние рекорды</h2>

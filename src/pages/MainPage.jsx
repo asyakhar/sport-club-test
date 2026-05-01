@@ -102,7 +102,9 @@ const MainPage = () => {
                   <Link to="/my-trainings" className="nav-link">
                     Мои тренировки
                   </Link>
-
+                  <Link to="/achievements" className="nav-link">
+                    Достижения
+                  </Link>
                   <Link to="/progress" className="nav-link">
                     Прогресс
                   </Link>
